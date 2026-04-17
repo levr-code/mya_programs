@@ -1,10 +1,10 @@
 #include "../lib/myaos.h"
 
-const char* mya_normal_file_read(char[] name) {
-    uint8_t buf[2048 + 1];
+const char* mya_normal_file_read(char[] name, uint32_t size) {
+    uint8_t * buf = malloc(size*sizeof(uint8_t));
     uint32_t size = 0;
 
-    int c = mya_fs_read(name, buf, 2048, &size);
+    int c = mya_fs_read(name, buf, size, &size);
     if (c != 0) {
         return NULL;
     };
@@ -12,9 +12,9 @@ const char* mya_normal_file_read(char[] name) {
     return (const char*)buf
 };
 
-const char* mya_normal_input(chat[] prompt){
+const char* mya_normal_input(char[] prompt){
     mya_puts(prompt);
-    buf[100];
+    char * buf = malloc(100 * sizeof(char));
     int n = mya_console_readline(buf, sizeof(buf), 1);
     if (n != 0){
         return NULL;
