@@ -1,6 +1,6 @@
 #include "../lib/myaos.h"
 
-const char* mya_normal_file_read(char[] name, uint32_t size) {
+const char* mya_file_read_new(char[] name, uint32_t size) {
     uint8_t * buf = malloc(size*sizeof(uint8_t));
     uint32_t size = 0;
 
@@ -12,7 +12,7 @@ const char* mya_normal_file_read(char[] name, uint32_t size) {
     return (const char*)buf
 };
 
-const char* mya_normal_input(char[] prompt){
+const char* mya_input_new(char[] prompt){
     mya_puts(prompt);
     char * buf = malloc(100 * sizeof(char));
     int n = mya_console_readline(buf, sizeof(buf), 1);
